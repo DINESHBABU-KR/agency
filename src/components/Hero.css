@@ -1,0 +1,170 @@
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 80px;
+}
+
+.hero-grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, transparent 100%);
+}
+
+.hero-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-btns {
+  padding: 20px;
+  /* Provides extra breathing room for the glowing boundary */
+  margin-top: 10px;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
+
+
+
+.hero-title {
+  /* font-family: 'Syne', sans-serif; */
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+
+  /* font-family: "Pacifico"; */
+  font-size: 5.5rem;
+  line-height: 1.05;
+  margin-bottom: 25px;
+  letter-spacing: -2px;
+}
+
+.highlight-underline {
+  /* Removed underline as requested */
+  position: relative;
+  z-index: 1;
+}
+
+.period {
+  color: var(--accent-primary);
+}
+
+.hero-description {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.35rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  max-width: 700px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 3.2rem;
+  }
+
+  .highlight-underline::after {
+    bottom: 4px;
+    height: 8px;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+  }
+}
+
+/* Infinte Logo Slider */
+.hero-slider-container {
+  width: 100%;
+  padding: 25px 0;
+  background: rgba(11, 15, 25, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  margin-top: auto;
+}
+
+.hero-slide-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLogo 25s linear infinite;
+}
+
+.slide-group {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding-right: 80px;
+}
+
+.slide {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #9ca3af;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.slide:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+@keyframes scrollLogo {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero-slider-container {
+    padding: 15px 0;
+  }
+
+  .slide-group {
+    gap: 50px;
+    padding-right: 50px;
+  }
+
+  .slide {
+    font-size: 1rem;
+  }
+}
