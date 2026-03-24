@@ -1,4 +1,5 @@
 import React from 'react';
+import logoBrand from '../assets/logo-brand.png';
 import './Footer.css';
 
 const Footer = () => {
@@ -6,10 +7,10 @@ const Footer = () => {
     <footer className="footer-section">
       <div className="container footer-container">
         <div className="footer-logo">
-          <span className="text-gradient" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Portfolio.</span>
+          <img src={logoBrand} alt="Adex Logo" className="footer-logo-img" />
         </div>
         <p className="footer-copy">
-          &copy; {new Date().getFullYear()} Freelance Developer. All rights reserved.
+          &copy; {new Date().getFullYear()} Advanced Digital Excellence. All rights reserved.
         </p>
       </div>
     </footer>

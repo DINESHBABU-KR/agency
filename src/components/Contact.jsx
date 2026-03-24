@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
+import logoBrand from '../assets/logo-brand.png';
 import './Contact.css';
 
 const Contact = () => {
@@ -41,7 +42,9 @@ const Contact = () => {
 
             <div className="contact-form-side">
               <div className="contact-form-box">
-                <h3 className="form-box-title">Portfolio</h3>
+                <div className="contact-logo-wrapper">
+                  <img src={logoBrand} alt="Adex Logo" className="contact-form-logo" />
+                </div>
                 <p className="form-box-subtitle">Web Design & Software Development</p>
                 <span className="availability-badge">● Available for new projects</span>
                 
@@ -61,11 +64,14 @@ const Contact = () => {
       
       <footer className="simple-footer">
         <div className="container footer-content">
-          <div className="footer-logo"><i>Portfolio</i> &copy; {new Date().getFullYear()}</div>
+          <div className="footer-logo">
+            <img src={logoBrand} alt="Adex" className="footer-simple-logo" />
+            <span>&copy; {new Date().getFullYear()}</span>
+          </div>
           <div className="footer-links">
             <a href="#services">Services</a>
             <a href="#about">About</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#portfolio">Work</a>
           </div>
         </div>
       </footer>

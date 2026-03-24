@@ -1,9 +1,9 @@
 .hero-section {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden; /* Prevent any unintended scroll from glow orbs */
   padding-top: 80px;
 }
 
@@ -53,26 +53,85 @@
 
 
 .hero-title {
-  /* font-family: 'Syne', sans-serif; */
-  font-family: "Pacifico", cursive;
-  font-weight: 400;
-  font-style: normal;
-
-  /* font-family: "Pacifico"; */
+  font-family: var(--font-main);
   font-size: 5.5rem;
-  line-height: 1.05;
+  font-weight: 800;
+  line-height: 1.1;
   margin-bottom: 25px;
-  letter-spacing: -2px;
-}
-
-.highlight-underline {
-  /* Removed underline as requested */
+  letter-spacing: -2.5px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-.period {
-  color: var(--accent-primary);
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Badge Styling */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  margin-bottom: 25px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.badge-logo {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+}
+
+.badge-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #e2e8f0;
+}
+
+/* Background Glows */
+.hero-glow-1, .hero-glow-2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  opacity: 0.35;
+  animation: pulseGlow 8s infinite alternate;
+  pointer-events: none;
+}
+
+.hero-glow-1 {
+  top: -10%;
+  left: -10%;
+  width: 45vw;
+  height: 45vw;
+  background: var(--accent-secondary);
+}
+
+.hero-glow-2 {
+  bottom: 0%;
+  right: -10%;
+  width: 40vw;
+  height: 40vw;
+  background: var(--accent-primary);
+  animation-delay: -4s;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.2; transform: scale(0.9); }
+  100% { opacity: 0.5; transform: scale(1.1); }
 }
 
 .hero-description {
@@ -86,17 +145,23 @@
 }
 
 @media screen and (max-width: 768px) {
-  .hero-title {
-    font-size: 3.2rem;
+  .hero-section {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 40px;
   }
-
-  .highlight-underline::after {
-    bottom: 4px;
-    height: 8px;
+  
+  .hero-title {
+    font-size: 3.5rem;
+    letter-spacing: -1.5px;
   }
 
   .hero-description {
     font-size: 1.1rem;
+  }
+
+  .hero-glow-1, .hero-glow-2 {
+    filter: blur(80px);
   }
 }
 

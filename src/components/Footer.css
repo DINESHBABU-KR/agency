@@ -4,6 +4,17 @@
   background: rgba(11, 15, 25, 0.8);
 }
 
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo-img {
+  height: 35px;
+  width: auto;
+  object-fit: contain;
+}
+
 .footer-container {
   display: flex;
   justify-content: space-between;

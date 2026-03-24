@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { SiReact, SiNodedotjs, SiNextdotjs, SiMongodb, SiSpringboot, SiMysql, SiFirebase, SiSupabase } from 'react-icons/si';
+import logoBrand from '../assets/logo-brand.png';
 import './Hero.css';
 
 const TechLogos = () => (
@@ -20,33 +21,45 @@ const TechLogos = () => (
 const Hero = () => {
   return (
     <section id="hero" className="hero-section">
+      <div className="hero-glow-1"></div>
+      <div className="hero-glow-2"></div>
       <div className="hero-grid-bg"></div>
       <div className="container hero-container">
-        <motion.div 
+        <motion.div
           className="hero-content"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h1 
+          <motion.div
+            className="hero-badge"
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+          >
+            <img src={logoBrand} alt="Adex" className="badge-logo" />
+            <span className="badge-text" style={{ fontWeight: '600' }}>Adex</span>
+          </motion.div>
+
+          <motion.h1
             className="hero-title"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            We build websites that <br/>
-            <span className="highlight-underline">grow your business<span className="period">.</span></span>
+            We build websites that <br />
+            <span className="text-gradient">grow your business</span>
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="hero-description"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Premium web design, React development, and SEO optimization. We 
+            Premium web design, React development, and SEO optimization. We
             deliver stunning, high-performing websites tailored to scale your brand.
           </motion.p>
-          <motion.div 
+          <motion.div
             className="hero-btns"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

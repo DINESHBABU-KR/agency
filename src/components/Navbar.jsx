@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import logoBrand from '../assets/logo-brand.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -43,7 +44,7 @@ const Navbar = () => {
       <div className="navbar">
         <div className="logo">
           <Link to="hero" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>
-            <i>Portfolio</i>
+            <img src={logoBrand} alt="Adex Logo" className="logo-img" />
           </Link>
         </div>
 
@@ -56,7 +57,7 @@ const Navbar = () => {
             <Link to="services" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>Services</Link>
           </li>
           <li className="nav-item">
-            <Link to="portfolio" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>Portfolio</Link>
+            <Link to="portfolio" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>Work</Link>
           </li>
           <li className="nav-item">
             <Link to="pricing" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>Pricing</Link>
