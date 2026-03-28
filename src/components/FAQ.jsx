@@ -32,13 +32,7 @@ const FAQ = () => {
   return (
     <section id="faq" className="section-wrapper">
       <div className="container">
-        <motion.div 
-          className="card-container faq-container"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="card-container faq-container">
           <div className="portfolio-header">
             <h2 className="card-title">FAQ<span className="period">.</span></h2>
             <p className="portfolio-subtitle">Common questions about working together.</p>
@@ -73,7 +67,7 @@ const FAQ = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

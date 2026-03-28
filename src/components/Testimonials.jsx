@@ -28,13 +28,7 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="section-wrapper">
       <div className="container">
-        <motion.div 
-          className="card-container testimonials-container"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="card-container testimonials-container">
           <div className="portfolio-header">
             <h2 className="card-title">Reviews<span className="period">.</span></h2>
             <p className="portfolio-subtitle">What people are saying about the work.</p>
@@ -66,7 +60,7 @@ const Testimonials = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

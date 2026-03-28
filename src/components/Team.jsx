@@ -58,13 +58,7 @@ const Team = () => {
   return (
     <section id="team" className="section-wrapper">
       <div className="container">
-        <motion.div 
-          className="card-container team-container"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="card-container team-container">
           <div className="portfolio-header">
             <h2 className="card-title">Our Team<span className="period">.</span></h2>
             <p className="portfolio-subtitle">The brilliant minds behind every successful project.</p>
@@ -72,28 +66,36 @@ const Team = () => {
 
           <div className="team-grid">
             {teamData.map((member, index) => (
-              <motion.div 
+              <div 
                 className="team-card"
                 key={index}
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.3 }}
               >
-                <div className="team-img-wrapper">
-                  <img src={member.imgUrl} alt={member.name} className="team-img" />
-                  <div className="team-social-overlay">
-                    {member.socials.linkedin && <a href={member.socials.linkedin}><FaLinkedinIn /></a>}
-                    {member.socials.twitter && <a href={member.socials.twitter}><FaTwitter /></a>}
-                    {member.socials.github && <a href={member.socials.github}><FaGithub /></a>}
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <div className="team-img-wrapper">
+                      <img src={member.imgUrl} alt={member.name} className="team-img" />
+                    </div>
+                    <div className="team-info">
+                      <h3>{member.name}</h3>
+                      <p>{member.role}</p>
+                    </div>
+                  </div>
+                  <div className="flip-card-back">
+                    <div className="back-content">
+                      <h3>{member.name}</h3>
+                      <p>{member.role}</p>
+                      <div className="social-links">
+                        {member.socials.linkedin && <a href={member.socials.linkedin} target="_blank" rel="noreferrer"><FaLinkedinIn /></a>}
+                        {member.socials.twitter && <a href={member.socials.twitter} target="_blank" rel="noreferrer"><FaTwitter /></a>}
+                        {member.socials.github && <a href={member.socials.github} target="_blank" rel="noreferrer"><FaGithub /></a>}
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="team-info">
-                  <h3>{member.name}</h3>
-                  <p>{member.role}</p>
-                </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

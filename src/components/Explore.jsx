@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import Magnetic from './Magnetic';
 import './Explore.css';
 
 const portfolioData = [
@@ -28,13 +29,7 @@ const Explore = () => {
   return (
     <section id="portfolio" className="section-wrapper">
       <div className="container">
-        <motion.div 
-          className="card-container"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="card-container">
           <div className="portfolio-header">
             <h2 className="card-title">Portfolio<span className="period">.</span></h2>
             <p className="portfolio-subtitle">Selected work. From local businesses to international platforms.</p>
@@ -49,9 +44,17 @@ const Explore = () => {
                 transition={{ duration: 0.4 }}
               >
                 <div className="portfolio-img-wrapper">
-                  <img src={project.imgUrl} alt={project.title} className="portfolio-img" />
+                  <motion.img 
+                    src={project.imgUrl} 
+                    alt={project.title} 
+                    className="portfolio-img" 
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  />
                   <div className="portfolio-img-overlay">
-                    <div className="portfolio-visit-btn">Visit Site <FaExternalLinkAlt size={12} style={{marginLeft: '6px'}}/></div>
+                    <Magnetic strength={0.2}>
+                      <div className="portfolio-visit-btn">Visit Site <FaExternalLinkAlt size={12} style={{marginLeft: '6px'}}/></div>
+                    </Magnetic>
                   </div>
                 </div>
                 <div className="portfolio-details">
@@ -59,14 +62,18 @@ const Explore = () => {
                   <p>{project.desc}</p>
                   <div className="project-tags">
                     {project.tags.map((tag, i) => (
-                      <span key={i} className="project-tag">{tag}</span>
+                      <motion.span 
+                        key={i} 
+                        className="project-tag"
+                        whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                      >{tag}</motion.span>
                     ))}
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

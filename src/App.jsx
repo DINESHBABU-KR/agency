@@ -10,6 +10,7 @@ import Team from './components/Team';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 
+
 function App() {
   return (
     <>

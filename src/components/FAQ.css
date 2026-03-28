@@ -24,13 +24,12 @@
 
 .faq-item:hover {
   border-color: rgba(0, 240, 255, 0.3);
-  box-shadow: 0 5px 15px rgba(0, 240, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .faq-item.active {
   border-color: var(--accent-primary);
-  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
-  background: rgba(0, 240, 255, 0.02);
+  background: rgba(0, 240, 255, 0.04);
 }
 
 .faq-question {

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logoBrand from '../assets/logo-brand.png';
+import Magnetic from './Magnetic';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -52,32 +54,56 @@ const Navbar = () => {
           {click ? <FaTimes size={20} color="#fff" /> : <FaBars size={20} color="#fff" />}
         </div>
 
-        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-          <li className="nav-item">
-            <Link to="services" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>Services</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="portfolio" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>Work</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="pricing" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>Pricing</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="about" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>About</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="team" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>Team</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="faq" spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>Faq</Link>
-          </li>
-        </ul>
+        <motion.ul 
+          className={click ? 'nav-menu active' : 'nav-menu'}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2,
+              },
+            },
+          }}
+        >
+          {[
+            { to: 'services', label: 'Services' },
+            { to: 'portfolio', label: 'Work' },
+            { to: 'pricing', label: 'Pricing' },
+            { to: 'about', label: 'About' },
+            { to: 'team', label: 'Team' },
+            { to: 'faq', label: 'Faq' },
+          ].map((item, index) => (
+            <motion.li 
+              key={index} 
+              className="nav-item"
+              variants={{
+                hidden: { opacity: 0, y: -10 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
+              <Link to={item.to} spy={true} smooth={true} offset={-100} duration={200} onClick={closeMenu}>
+                {item.label}
+              </Link>
+            </motion.li>
+          ))}
+        </motion.ul>
 
-        <div className="nav-cta hide-mobile">
+        <motion.div 
+          className="nav-cta hide-mobile"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5 }}
+        >
           <Link to="contact" spy={true} smooth={true} offset={-100} duration={200}>
-            <button className="btn-primary" style={{ padding: '10px 24px', fontSize: '0.9rem' }}>Book a Call</button>
+            <Magnetic strength={0.3}>
+              <button className="btn-primary" style={{ padding: '10px 24px', fontSize: '0.9rem' }}>Book a Call</button>
+            </Magnetic>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </header>
   );

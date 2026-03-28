@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCheck } from 'react-icons/fa';
+import Magnetic from './Magnetic';
 import './Pricing.css';
 
 const pricingData = [
@@ -37,13 +38,7 @@ const Pricing = () => {
   return (
     <section id="pricing" className="section-wrapper">
       <div className="container">
-        <motion.div 
-          className="card-container"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="card-container">
           <div className="portfolio-header">
             <h2 className="card-title">Pricing<span className="period">.</span></h2>
             <p className="portfolio-subtitle">Transparent costs. High quality approach.</p>
@@ -54,27 +49,29 @@ const Pricing = () => {
               <motion.div 
                 className={`pricing-card ${tier.isPopular ? 'popular' : ''}`}
                 key={index}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                transition={{ duration: 0.4 }}
               >
-                {tier.isPopular && <div className="popular-badge">POPULAR</div>}
+                {tier.isPopular && <div className="popular-badge">MOST POPULAR</div>}
                 <h3 className="pricing-title">{tier.title}</h3>
+                <div className="pricing-price">{tier.price} {tier.price !== 'Variable' && <span>/ fix</span>}</div>
                 <p className="pricing-desc">{tier.desc}</p>
-                <div className="pricing-type">{tier.type}</div>
-                <div className="pricing-price">{tier.price}</div>
                 <ul className="pricing-features">
                   {tier.features.map((feature, i) => (
-                    <li key={i}><FaCheck className="check-icon" /> {feature}</li>
+                    <li key={i}>
+                      <FaCheck className="check-icon" /> {feature}
+                    </li>
                   ))}
                 </ul>
-                <button className={tier.isPopular ? 'btn-accent-blue' : 'btn-accent'}>
-                  {tier.btnText} &rarr;
-                </button>
+                <Magnetic strength={0.2}>
+                  <button className={tier.isPopular ? 'btn-accent-blue' : 'btn-accent'}>
+                    {tier.btnText}
+                  </button>
+                </Magnetic>
               </motion.div>
             ))}
           </div>
-
-        </motion.div>
+        </div>
       </div>
     </section>
   );

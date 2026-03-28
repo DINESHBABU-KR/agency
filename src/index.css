@@ -86,10 +86,16 @@ ul {
 .card-container {
   background: var(--bg-color-alt);
   border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   padding: 60px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Sophisticated glass border */
   margin-bottom: 20px;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+.card-container:hover {
+  box-shadow: 0 20px 60px rgba(0, 240, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .card-title {
@@ -180,4 +186,12 @@ ul {
   background: #00c3cc; /* Darker cyan */
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 240, 255, 0.2);
+}
+
+/* Drifting Globs */
+@keyframes driftGlow {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 40px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
 }

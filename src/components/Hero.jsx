@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { SiReact, SiNodedotjs, SiNextdotjs, SiMongodb, SiSpringboot, SiMysql, SiFirebase, SiSupabase } from 'react-icons/si';
 import logoBrand from '../assets/logo-brand.png';
+import WordReveal from './WordReveal';
+import Magnetic from './Magnetic';
 import './Hero.css';
 
 const TechLogos = () => (
@@ -19,42 +21,49 @@ const TechLogos = () => (
 );
 
 const Hero = () => {
+  const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    setMousePos({ x: clientX, y: clientY });
+  };
+
   return (
-    <section id="hero" className="hero-section">
+    <section id="hero" className="hero-section" onMouseMove={handleMouseMove}>
       <div className="hero-glow-1"></div>
       <div className="hero-glow-2"></div>
       <div className="hero-grid-bg"></div>
+      <div 
+        className="hero-interactive-blob"
+        style={{
+          transform: `translate(${mousePos.x - 200}px, ${mousePos.y - 200}px)`,
+        }}
+      ></div>
       <div className="container hero-container">
-        <motion.div
-          className="hero-content"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.div
-            className="hero-badge"
-            initial={{ opacity: 0, scale: 0.8, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
-            <img src={logoBrand} alt="Adex" className="badge-logo" />
-            <span className="badge-text" style={{ fontWeight: '600' }}>Adex</span>
-          </motion.div>
+        <div className="hero-content">
+          <Magnetic strength={0.2}>
+            <motion.div
+              className="hero-badge"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+            >
+              <img src={logoBrand} alt="Adex" className="badge-logo" />
+              <span className="badge-text" style={{ fontWeight: '600' }}>Adex</span>
+            </motion.div>
+          </Magnetic>
 
-          <motion.h1
+          <WordReveal 
+            text="We build websites that grow your business" 
             className="hero-title"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            We build websites that <br />
-            <span className="text-gradient">grow your business</span>
-          </motion.h1>
+            delay={0.2}
+          />
+          
           <motion.p
             className="hero-description"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
           >
             Premium web design, React development, and SEO optimization. We
             deliver stunning, high-performing websites tailored to scale your brand.
@@ -63,13 +72,15 @@ const Hero = () => {
             className="hero-btns"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
           >
             <Link to="contact" spy={true} smooth={true} offset={-80} duration={200}>
-              <button className="btn-primary">Book a Call</button>
+              <Magnetic strength={0.3}>
+                <button className="btn-primary">Book a Call</button>
+              </Magnetic>
             </Link>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="hero-slider-container">
